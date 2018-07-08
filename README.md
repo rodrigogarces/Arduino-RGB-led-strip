@@ -1,4 +1,4 @@
-# Arduino-RGB-led-strip
+# Arduino-RGB-led-strip (GUI or command line)
 Arduino + processing rbg led strip controlling 
 
 ## Arduino
