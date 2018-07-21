@@ -20,13 +20,13 @@ Available at http://jared.geek.nz/2013/feb/linear-led-pwm
 
 ## Usage
 #### On procesing
-1. Pick a RGB value from rgb color mixer
+1. Pick a RGB value from RGB color mixer
 2. Apply luminance to rgb values
 3. Send values via serial to arduino
 
 #### On arduino
-1. Receive rgb values (with luminance applied)
-2. Adjust individual rgb colors to reduce color deviance (based on led specific)
+1. Receive RGB values (with luminance applied)
+2. Adjust individual RGB colors to reduce color deviance (based on led specific)
 3. Adjust gamma to improve color accuracy
 4. Send values to leds
 
