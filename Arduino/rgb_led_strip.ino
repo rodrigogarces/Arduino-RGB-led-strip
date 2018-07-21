@@ -1,14 +1,18 @@
 #include "cie1931.h"
 
+//Uncomment your led type
+#define commonAnode
+//#define commonCathone
+
 //led ports
 #define ledRed   10
 #define ledGreen 8
 #define ledBlue  9
 
 //max color led values
-#define maxRed    255    //165   255   255   255   255   255   255
-#define maxGreen  90     //252   230   128   134   120   112   90
-#define maxBlue   57     //250   180   76    102   76    76    57
+#define maxRed    255
+#define maxGreen  90
+#define maxBlue   57
 
 int red, green, blue = 0;
 
@@ -52,7 +56,7 @@ void loop() {
       blue = 0;
     }
 
-    Serial.println("Original values: " + String(red) + " " + String(green) + 
+    Serial.println("Original values: " + String(red) + " " + String(green) +
     " " + String(blue));
 
     //remap color values to improve color precision
@@ -62,17 +66,21 @@ void loop() {
 
     //PWM
     //common anode
-    /*analogWrite(ledRed, cie[red]);
-    analogWrite(ledGreen, cie[green]);
-    analogWrite(ledBlue, cie[blue]);*/
+    #ifdef commonAnode
+      analogWrite(ledRed, cie[red]);
+      analogWrite(ledGreen, cie[green]);
+      analogWrite(ledBlue, cie[blue]);
+    #endif
 
     //common cathode
-    analogWrite(ledRed, cie[255 - red]);
-    analogWrite(ledGreen, cie[255 - green]);
-    analogWrite(ledBlue, cie[255 - blue]);
-    
+    #ifdef commonCathone
+      analogWrite(ledRed, cie[255 - red]);
+      analogWrite(ledGreen, cie[255 - green]);
+      analogWrite(ledBlue, cie[255 - blue]);
+    #endif
+
     //print rgb values
-    Serial.println("remaped values: " + String(red) + " " + String(green) + 
+    Serial.println("remaped values: " + String(red) + " " + String(green) +
     " " + String(blue));
   }
 }
